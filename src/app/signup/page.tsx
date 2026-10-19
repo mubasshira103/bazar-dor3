@@ -96,14 +96,6 @@ export default function SignUpPage() {
         {/* Heading */}
 
         <div className="mb-6 text-center">
-          <Link
-            href="/"
-            className="mb-5 inline-flex items-center gap-2 rounded-xl bg-[#078744] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#056b37]"
-          >
-            <span className="text-lg">🛒</span>
-            বাজার দর
-          </Link>
-
           <h1 className="text-2xl font-extrabold tracking-tight sm:text-[28px]">
             অ্যাকাউন্ট তৈরি করুন
           </h1>

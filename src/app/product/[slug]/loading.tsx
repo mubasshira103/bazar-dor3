@@ -1,1 +1,17 @@
-export default function Loading(){return <div className="mx-auto max-w-6xl px-4 py-10"><div className="skeleton h-48 w-full rounded-2xl"/><div className="mt-7 grid grid-cols-2 gap-3 lg:grid-cols-4">{Array.from({length:4},(_,i)=><div key={i} className="skeleton h-28 rounded-2xl"/>)}</div><div className="skeleton mt-7 h-64 w-full rounded-2xl"/></div>}
+export default function Loading() {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-[#f7faf7] px-4">
+      <div className="flex flex-col items-center text-center">
+        {/* Website Name */}
+
+        {/* Loading Spinner */}
+        <div className="relative mb-7 h-14 w-14">
+          <div className="absolute inset-0 animate-spin rounded-full border-4 border-green-100 border-t-green-700" />
+        </div>
+
+        {/* Loading Text */}
+        <h2 className="mb-2 text-xl font-bold text-gray-800">দয়া করে অপেক্ষা করুন...</h2>
+      </div>
+    </main>
+  );
+}

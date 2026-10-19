@@ -83,14 +83,6 @@ export default function SignInPage() {
         {/* Heading */}
 
         <div className="mb-7 text-center">
-          <Link
-            href="/"
-            className="mb-5 inline-flex items-center gap-2 rounded-xl bg-[#078744] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#056b37]"
-          >
-            <span className="text-lg">🛒</span>
-            বাজার দর
-          </Link>
-
           <h1 className="text-2xl font-extrabold tracking-tight sm:text-[28px]">সাইন ইন</h1>
 
           <p className="mt-2 text-sm leading-7 text-[#7a837d]">
