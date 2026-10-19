@@ -16,12 +16,13 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const { data: session, isPending } = useSession();
+  const { data: session, isPending, refetch } = useSession();
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [open, setOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
+  // ক্যাটাগরি লোড
   useEffect(() => {
     let isMounted = true;
 
@@ -37,43 +38,56 @@ export default function Navbar() {
       }
     }
 
-    loadCategories();
+    void loadCategories();
 
     return () => {
       isMounted = false;
     };
   }, []);
 
+  // Profile update event পেলে Better Auth-এর session আবার লোড করো।
+  useEffect(() => {
+    const handleProfileUpdated = () => {
+      void refetch();
+    };
+
+    window.addEventListener('profile-updated', handleProfileUpdated);
+
+    return () => {
+      window.removeEventListener('profile-updated', handleProfileUpdated);
+    };
+  }, [refetch]);
+
+  // Logout
   const logout = async () => {
     try {
       const result = await signOut();
 
       if (result.error) {
-        toast.error('সাইন আউট করা যায়নি!');
+        toast.error(result.error.message || 'সাইন আউট করা যায়নি!');
         return;
       }
 
       setUserMenuOpen(false);
       setOpen(false);
 
-      toast.success('সাইন আউট সফল হয়েছে!');
+      toast.success('সাইন আউট সফল হয়েছে!');
 
       router.push('/');
       router.refresh();
     } catch (error: unknown) {
       console.error('Logout failed:', error);
-      toast.error('সাইন আউট করার সময় সমস্যা হয়েছে!');
+      toast.error('সাইন আউট করার সময় সমস্যা হয়েছে!');
     }
   };
 
   const user = session?.user;
-  console.log(user);
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#e4ebe5] bg-[#fbfdfb]">
       {/* Top Navbar */}
       <div className="mx-auto flex h-[70px] max-w-[1180px] items-center justify-between gap-3 px-3 sm:px-5">
-        {/* Logo and Date */}
+        {/* Logo */}
         <Link
           href="/"
           onClick={() => {
@@ -90,7 +104,6 @@ export default function Navbar() {
             <strong className="block text-[19px] font-extrabold leading-tight text-[#222c25] sm:text-[21px]">
               বাজার দর
             </strong>
-
             <small className="block text-[10px] text-[#7a837d] sm:text-[11px]">
               {getBanglaDate()}
             </small>
@@ -111,7 +124,16 @@ export default function Navbar() {
                 className="flex items-center gap-2 rounded-full px-2 py-1 text-[#222c25] transition hover:bg-[#e7f5ec]"
               >
                 <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-[#e7f5ec] text-[#078744]">
-                  {user ? <img src={user?.image} alt="" /> : <UserRound size={22} />}
+                  {user.image ? (
+                    <img
+                      key={user.image}
+                      src={user.image}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <UserRound size={22} />
+                  )}
                 </span>
 
                 <span className="max-w-[120px] truncate text-sm font-semibold">

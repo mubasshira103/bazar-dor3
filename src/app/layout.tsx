@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
-import Navbar from './components/Navbar';
+
 import { Toaster } from 'react-hot-toast';
 import { Hind_Siliguri } from 'next/font/google';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="bn" data-theme="light">
       <body className={`${hind.className} min-h-screen antialiased`}>
         <Navbar></Navbar>
-        <main className="min-h-[65vh]">{children}</main>
+        <main className="min-h-[65vh] bg-[#f0f6f0]">{children}</main>
         <Footer></Footer>
         <Toaster position="top-center" toastOptions={{ duration: 3500 }} />
       </body>

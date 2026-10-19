@@ -4,7 +4,12 @@ import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authClient } from '../../../lib/auth-client';
-import { ArrowLeft, Save, LoaderCircle, UserRound } from 'lucide-react';
+import {
+  ArrowLeft,
+  Save,
+  LoaderCircle,
+  UserRound,
+} from 'lucide-react';
 import toast from 'react-hot-toast';
 
 type ProfileFormProps = {
@@ -16,11 +21,9 @@ type ProfileFormProps = {
   };
 };
 
-// ছবির URL সঠিক কি না যাচাই করবে
 function isValidImageUrl(value: string): boolean {
   try {
     const url = new URL(value);
-
     return url.protocol === 'http:' || url.protocol === 'https:';
   } catch {
     return false;
@@ -88,9 +91,14 @@ function ProfileForm({ user }: ProfileFormProps) {
       });
 
       if (result.error) {
-        toast.error(result.error.message || 'প্রোফাইল আপডেট করা যায়নি।');
+        toast.error(
+          result.error.message || 'প্রোফাইল আপডেট করা যায়নি।'
+        );
         return;
       }
+
+      // Navbar-কে নতুন প্রোফাইল তথ্য আনার সংকেত দাও।
+      window.dispatchEvent(new Event('profile-updated'));
 
       toast.success('প্রোফাইল সফলভাবে আপডেট হয়েছে!');
 
@@ -98,7 +106,9 @@ function ProfileForm({ user }: ProfileFormProps) {
       router.refresh();
     } catch (error) {
       console.error('Profile update failed:', error);
-      toast.error('কোনো সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।');
+      toast.error(
+        'কোনো সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।'
+      );
     } finally {
       setSaving(false);
     }
@@ -116,14 +126,16 @@ function ProfileForm({ user }: ProfileFormProps) {
         </Link>
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">প্রোফাইল আপডেট করুন</h1>
-
-          <p className="mt-2 text-sm text-gray-500">আপনার অ্যাকাউন্টের তথ্য আপডেট করুন।</p>
+          <h1 className="text-3xl font-bold text-gray-900">
+            প্রোফাইল আপডেট করুন
+          </h1>
+          <p className="mt-2 text-sm text-gray-500">
+            আপনার অ্যাকাউন্টের তথ্য আপডেট করুন।
+          </p>
         </div>
 
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Profile image preview */}
             <div className="flex flex-col items-center gap-3 border-b border-gray-100 pb-6">
               {showImage ? (
                 <img
@@ -143,12 +155,16 @@ function ProfileForm({ user }: ProfileFormProps) {
                 </div>
               )}
 
-              <p className="text-sm text-gray-500">প্রোফাইল ছবির প্রিভিউ</p>
+              <p className="text-sm text-gray-500">
+                প্রোফাইল ছবির প্রিভিউ
+              </p>
             </div>
 
-            {/* Name input */}
             <div>
-              <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="mb-2 block text-sm font-medium text-gray-700"
+              >
                 পুরো নাম <span className="text-red-500">*</span>
               </label>
 
@@ -166,9 +182,11 @@ function ProfileForm({ user }: ProfileFormProps) {
               />
             </div>
 
-            {/* Image URL input */}
             <div>
-              <label htmlFor="image" className="mb-2 block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="image"
+                className="mb-2 block text-sm font-medium text-gray-700"
+              >
                 প্রোফাইল ছবির URL
               </label>
 
@@ -184,17 +202,16 @@ function ProfileForm({ user }: ProfileFormProps) {
               />
 
               <p className="mt-2 text-xs text-gray-500">
-                সবার দেখার উপযোগী একটি ছবির URL দিন। প্রোফাইল ছবি সরিয়ে ফেলতে চাইলে ঘরটি খালি রাখুন।
+                ছবির URL খালি রাখলে প্রোফাইল ছবি সরানো হবে।
               </p>
 
               {trimmedImage && !showImage && (
                 <p className="mt-2 text-sm text-red-500">
-                  অনুগ্রহ করে একটি সঠিক HTTP বা HTTPS URL দিন।
+                  সঠিক HTTP অথবা HTTPS URL দিন।
                 </p>
               )}
             </div>
 
-            {/* Action buttons */}
             <div className="flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:justify-end">
               <Link
                 href="/profile"
