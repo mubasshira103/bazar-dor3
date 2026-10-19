@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type { Product } from '../lib/types';
-import { formatPrice, getUnitBn } from '../lib/utils';
+import type { Product } from '../../lib/types';
+import { formatPrice, getUnitBn } from '../../lib/utils';
 export default function ProductCard({ product }: { product: Product }) {
   const up = product.change.dir === 'up',
     down = product.change.dir === 'down';

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { authClient } from '../lib/auth-client';
+import { authClient } from '../../lib/auth-client';
 import { UserRound, Mail, Pencil, LoaderCircle, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 
@@ -51,16 +51,12 @@ export default function ProfilePage() {
 
           <h1 className="text-3xl font-bold text-gray-900">আমার প্রোফাইল</h1>
 
-          <p className="mt-2 text-sm text-gray-500">
-            আপনার অ্যাকাউন্টের তথ্য দেখুন।
-          </p>
+          <p className="mt-2 text-sm text-gray-500">আপনার অ্যাকাউন্টের তথ্য দেখুন।</p>
         </div>
 
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="mb-6 flex items-center justify-between gap-3">
-            <h2 className="text-xl font-semibold text-gray-800">
-              ব্যক্তিগত তথ্য
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800">ব্যক্তিগত তথ্য</h2>
           </div>
 
           <div className="space-y-5">

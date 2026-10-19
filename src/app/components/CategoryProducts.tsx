@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
-import type { Product } from '../lib/types';
+import type { Product } from '../../lib/types';
 import ProductCard from './ProductCard';
 import Link from 'next/link';
 

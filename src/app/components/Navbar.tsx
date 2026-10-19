@@ -6,10 +6,10 @@ import { Menu, ShoppingBasket, X, UserRound, LogOut, ChevronDown } from 'lucide-
 import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-import { getCategories } from '../lib/api';
-import type { Category } from '../lib/types';
-import { getBanglaDate } from '../lib/utils';
-import { signOut, useSession } from '../lib/auth-client';
+import { getCategories } from '../../lib/api';
+import type { Category } from '../../lib/types';
+import { getBanglaDate } from '../../lib/utils';
+import { signOut, useSession } from '../../lib/auth-client';
 import PriceTicker from './PriceTicker';
 
 export default function Navbar() {

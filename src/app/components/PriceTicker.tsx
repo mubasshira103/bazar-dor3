@@ -1,9 +1,8 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getProducts } from '../lib/api';
-import { formatPrice, getUnitBn } from '../lib/utils';
+import { getProducts } from '../../lib/api';
+import { formatPrice, getUnitBn } from '../../lib/utils';
 
 type Product = {
   id: number | string;
@@ -58,11 +57,7 @@ export default function PriceTicker() {
                     : 'text-gray-500'
               }
             >
-              {p.change.dir === 'up'
-                ? '▲'
-                : p.change.dir === 'down'
-                  ? '▼'
-                  : '—'}{' '}
+              {p.change.dir === 'up' ? '▲' : p.change.dir === 'down' ? '▼' : '—'}{' '}
               {formatPrice(p.change.pct)}%
             </span>
           </div>
@@ -83,4 +78,3 @@ export default function PriceTicker() {
     </div>
   );
 }
-

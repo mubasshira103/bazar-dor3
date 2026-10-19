@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { authClient } from '../lib/auth-client';
+import { authClient } from '../../lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 import toast from 'react-hot-toast';

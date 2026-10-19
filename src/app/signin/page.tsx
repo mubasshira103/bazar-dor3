@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { authClient } from '../lib/auth-client';
+import { authClient } from '../../lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 import toast from 'react-hot-toast';
@@ -91,9 +91,7 @@ export default function SignInPage() {
             বাজার দর
           </Link>
 
-          <h1 className="text-2xl font-extrabold tracking-tight sm:text-[28px]">
-            সাইন ইন
-          </h1>
+          <h1 className="text-2xl font-extrabold tracking-tight sm:text-[28px]">সাইন ইন</h1>
 
           <p className="mt-2 text-sm leading-7 text-[#7a837d]">
             বিস্তারিত দাম ও বাজার তুলনা দেখতে অ্যাকাউন্টে প্রবেশ করুন।
@@ -108,7 +106,6 @@ export default function SignInPage() {
 
             <label className="flex flex-col gap-2 text-[13px] font-semibold">
               ইমেইল
-
               <input
                 type="email"
                 autoComplete="email"
@@ -124,7 +121,6 @@ export default function SignInPage() {
 
             <label className="flex flex-col gap-2 text-[13px] font-semibold">
               পাসওয়ার্ড
-
               <input
                 type="password"
                 autoComplete="current-password"
@@ -172,15 +168,9 @@ export default function SignInPage() {
               onClick={handleGithubSignIn}
               className="flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#e4ebe5] bg-white px-3 py-2.5 text-xs font-semibold transition hover:border-[#b7d8c2] hover:bg-[#f7fbf7] sm:text-[12px]"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                 <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.07c-3.1.68-3.76-1.32-3.76-1.32-.5-1.29-1.23-1.63-1.23-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.17 3.08 1.55.1-.72.4-1.21.7-1.49-2.48-.28-5.08-1.24-5.08-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.04-1.14 3.04-1.14.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.29-2.6 5.24-5.09 5.51.4.35.75 1.03.75 2.08V22c0 .29.2.64.76.53A11.1 11.1 0 0 0 12 .9Z" />
               </svg>
-
               GitHub দিয়ে চালিয়ে যান
             </button>
           </div>
@@ -200,10 +190,7 @@ export default function SignInPage() {
 
         {/* Home Link */}
 
-        <Link
-          href="/"
-          className="mt-6 text-xs text-[#7a837d] transition hover:text-[#078744]"
-        >
+        <Link href="/" className="mt-6 text-xs text-[#7a837d] transition hover:text-[#078744]">
           ← হোম পেজে ফিরে যান
         </Link>
       </div>

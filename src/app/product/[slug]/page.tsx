@@ -2,9 +2,9 @@ import { headers } from 'next/headers';
 import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
 
-import { auth } from '../../lib/auth';
-import { getProduct } from '../../lib/api';
-import { formatPrice, getUnitBn } from '../../lib/utils';
+import { auth } from '../../../lib/auth';
+import { getProduct } from '../../../lib/api';
+import { formatPrice, getUnitBn } from '../../../lib/utils';
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -59,7 +59,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       color: 'text-emerald-700',
     },
   ];
-
 
   return (
     <main className="min-h-screen bg-[#f0f6f1] px-3 py-6 text-[#263b32] sm:px-5 sm:py-8">
@@ -229,7 +228,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
           )}
         </section>
-
       </div>
     </main>
   );

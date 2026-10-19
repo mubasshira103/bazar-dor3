@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getCategories, getCategory, getProducts } from '../../lib/api';
+import { getCategories, getCategory, getProducts } from '../../../lib/api';
 import CategoryProducts from '../../components/CategoryProducts';
 export async function generateStaticParams() {
   return (await getCategories()).map((c) => ({ slug: c.slug }));
