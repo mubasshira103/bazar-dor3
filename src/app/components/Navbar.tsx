@@ -11,7 +11,6 @@ import type { Category } from '../lib/types';
 import { getBanglaDate } from '../lib/utils';
 import { signOut, useSession } from '../lib/auth-client';
 import PriceTicker from './PriceTicker';
-import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
