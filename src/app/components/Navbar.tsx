@@ -2,14 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import {
-  Menu,
-  ShoppingBasket,
-  X,
-  UserRound,
-  LogOut,
-  ChevronDown,
-} from 'lucide-react';
+import { Menu, ShoppingBasket, X, UserRound, LogOut, ChevronDown } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -18,6 +11,7 @@ import type { Category } from '../lib/types';
 import { getBanglaDate } from '../lib/utils';
 import { signOut, useSession } from '../lib/auth-client';
 import PriceTicker from './PriceTicker';
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -74,6 +68,7 @@ export default function Navbar() {
   };
 
   const user = session?.user;
+  console.log(user);
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#e4ebe5] bg-[#fbfdfb]">
@@ -117,7 +112,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 rounded-full px-2 py-1 text-[#222c25] transition hover:bg-[#e7f5ec]"
               >
                 <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-[#e7f5ec] text-[#078744]">
-                  <UserRound size={22} />
+                  {user ? <img src={user?.image} alt="" /> : <UserRound size={22} />}
                 </span>
 
                 <span className="max-w-[120px] truncate text-sm font-semibold">
