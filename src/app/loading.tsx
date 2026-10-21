@@ -3,7 +3,6 @@ export default function Loading() {
     <main className="flex min-h-screen items-center justify-center bg-[#f7faf7] px-4">
       <div className="flex flex-col items-center text-center">
         {/* Website Name */}
-        <h1 className="mb-2 text-3xl font-extrabold text-green-700">বাজার দর</h1>
 
         <p className="mb-10 text-sm text-gray-500">সঠিক তথ্য, সচেতন বাজার</p>
 
